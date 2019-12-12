@@ -55,19 +55,6 @@ function valid()
 
 <p>
     
-  <form action="admincon.php" method="post" name="fm">
-    
-    <b id="una"></b>
-
-
-<strong>Search User(User Name):</strong>
-
- <input style="width: 100%;padding: 12px 20px;margin: 8px 0;display: inline-block;border: 1px solid #ccc;border-radius: 4px;
-    box-sizing: border-box;" type="text" name="uname" placeholder="User Name...">
-    
-     
-     <input style="width: 100%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;
-    cursor: pointer;float: left;" type="submit"  name="search" value="search"   onclick="return  valid()"  ><br>
 
 
      <input style="width: 100%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;
@@ -75,8 +62,6 @@ function valid()
 
 
 
-
-  </form> 
    
   
 
@@ -105,10 +90,6 @@ function valid()
     <th style="border: 1px solid #ddd; padding: 8px;padding-top: 12px;padding-bottom: 12px;text-align: left;
   background-color: #4CAF50;
   color: white;">Email:</th>
-   <th style="border: 1px solid #ddd; padding: 8px;padding-top: 12px;padding-bottom: 12px;text-align: left;
-  background-color: #4CAF50;
-  color: white;">Update:</th>
-
   
 
 
@@ -246,13 +227,7 @@ foreach ($data as  $v)
     <td style="border: 1px solid #ddd; padding: 8px;"><?php  echo $v["UserName"];   ?></td>
     <td style="border: 1px solid #ddd; padding: 8px;"><?php  echo $v["Phone"];   ?></td>
     <td style="border: 1px solid #ddd; padding: 8px;"><?php  echo $v["Email"];   ?></td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><a style='text-decoration:none;color:green;' href='update.php?d=<?php echo $v["UserName"] ; ?> ' >
-
     
-
-     Update</a></td>
-
-  
      
 
  </tr>

@@ -37,7 +37,7 @@ $cd=array();
 include("function.php");
 
 
-profiledataread();
+renttakerdataread();
 
 
 
@@ -61,7 +61,9 @@ foreach ($data as  $v)
    
   <h3  style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;text-align: left;"> <spen style="color:green;"> Email: </spen><?php   echo $v["Email"]; ?></h3>
 
-   <h3  style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;text-align: left;"> <spen style="color:green;"> Area:  </spen><?php  echo $v["LastName"];  ?></h3>                  
+   <h3  style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;text-align: left;"> <spen style="color:green;"> Area:  </spen><?php  echo $v["LastName"];  ?></h3>
+
+                     
 
  
 
@@ -92,9 +94,7 @@ foreach ($data as  $v)
 
 
 
-<br><br><br><a href="Logout.php"  style="width: 97%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;
-   border-radius: 4px; cursor: pointer;text-align:center;text-decoration: none;float: left;">Logeout</a>
-
+<br><br><br>
 <a href="userhome.php"  style="width: 97%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;
    border-radius: 4px; cursor: pointer;text-align:center;text-decoration: none;float: left;">Back</a><br><br><br>
 

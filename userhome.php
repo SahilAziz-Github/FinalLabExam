@@ -33,7 +33,10 @@ if(isset($_COOKIE["valid"]) && $_COOKIE["valid"]=="yes")
    border-radius: 4px; cursor: pointer;text-align:center;text-decoration: none;float: left;">Logeout</a><br><br><br>
 
 
-<td style="border: 1px solid #ddd; padding: 8px;"><a style='text-decoration:none;color:blue;' href='Profile.php?d=<?php echo $v["UserName"] ; ?> ' >Profile </a></td>
+<a href="profile.php"  style="width: 97%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;
+   border-radius: 4px; cursor: pointer;text-align:center;text-decoration: none;float: left;">Profile</a><br><br><br>
+
+
 
 </tr>
 
