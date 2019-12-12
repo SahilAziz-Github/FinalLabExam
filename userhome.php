@@ -6,6 +6,7 @@
 
 if(isset($_COOKIE["valid"]) && $_COOKIE["valid"]=="yes")
 {
+  $_SESSION["uname"]=$_COOKIE["uname"];
 
 
 ?>
@@ -16,353 +17,28 @@ if(isset($_COOKIE["valid"]) && $_COOKIE["valid"]=="yes")
 <head>
 
 
-<script  type="text/javascript">
-
-	
-	
-function valid()
-
-{  
-	 var un = document.fm.uname.value;
-
-	 var flag = true;
-
-
-	 if (un.length == 0)
-	 {
-       
-
-        document.fm.uname.style.color="red";
-        document.getElementById("una").innerHTML="Enter a User Name First.";
-
-	     flag = false;
-
-     }
-
-
-     return flag;
-
- }
-
-
- </script>
-
 
 
 </head>
 <body>
-<p><h2>Admin Page:</h2></p>
+<p><h2>Welcome   <?php echo $_SESSION["uname"] ?> !!!!! </h2></p>
 
-<p>
-    
-  <form action="admincon.php" method="post" name="fm">
-    
-    <b id="una"></b>
 
 
-<strong>Search User(User Name):</strong>
 
- <input style="width: 100%;padding: 12px 20px;margin: 8px 0;display: inline-block;border: 1px solid #ccc;border-radius: 4px;
-    box-sizing: border-box;" type="text" name="uname" placeholder="User Name...">
-    
-     
-     <input style="width: 100%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;
-    cursor: pointer;float: left;" type="submit"  name="search" value="search"   onclick="return  valid()"  ><br>
 
 
-     <input style="width: 100%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;
-    cursor: pointer;float: left;" type="submit"  name="showall" value="Show All"><br>
-
-
-
-
-  </form> 
-   
-  
-
-
-</p>
-
-
-
-<p>
-<table style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;">
-  <tr>
-
-  <th style="border: 1px solid #ddd; padding: 8px;padding-top: 12px;padding-bottom: 12px;text-align: left;
-  background-color: #4CAF50;
-  color: white;">Name :</th>
-
-
-    <th style="border: 1px solid #ddd; padding: 8px;padding-top: 12px;padding-bottom: 12px;text-align: left;
-  background-color: #4CAF50;
-  color: white;">User Name: </th>
-    <th style="border: 1px solid #ddd; padding: 8px;padding-top: 12px;padding-bottom: 12px;text-align: left;
-  background-color: #4CAF50;
-  color: white;">Phone: </th>
-    <th style="border: 1px solid #ddd; padding: 8px;padding-top: 12px;padding-bottom: 12px;text-align: left;
-  background-color: #4CAF50;
-  color: white;">Email:</th>
-   <th style="border: 1px solid #ddd; padding: 8px;padding-top: 12px;padding-bottom: 12px;text-align: left;
-  background-color: #4CAF50;
-  color: white;">Update:</th>
-
-  
-
-
-  </tr>
-
-
-  <!--- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
-
-
-
-  <?php
-
-
-if(isset($_POST["search"]))
-
-{
-
-
-$data=array();
-
-$cd=array();
-
-include("function.php");
-
-renttakerdataread();
-
-
-$i=0;
-
-foreach ($data as  $v) 
-{
-
-if ($_POST["uname"] == $v["UserName"]  )
- {
-  
- global $i;
-
- $i++
-
-
-
- ?>
-
-
-<tr >
-    <td style="border: 1px solid #ddd; padding: 8px;" ><?php echo $v["FirstName"] ."  ". $v["LastName"];   ?></td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><?php  echo $v["UserName"];   ?></td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><?php  echo $v["Phone"];   ?></td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><?php  echo $v["Email"];   ?></td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><a style='text-decoration:none;color:green;' href='update.php?d=<?php echo $v["UserName"] ; ?> ' >
-
-    
-
-     Update</a></td>
-
-  
-     
-
- </tr>
-
-
-<?php 
-
-
-
-
-
-
-}
-
- }
-
-        if ($i==0) 
-        {
-          echo "<h3 style='color:red;text-align:center';>No match found !!!</h3>";
-        }
-
-      
-   }	
-
-
-?>
-
-
-
-<!--- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-<!--- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
-
-
-
-
-
-
-<?php
-
-if(isset($_POST["showall"]))
-
-{
-
-
-$data=array();
-
-$cd=array();
-
-include("function.php");
-
-renttakerdataread();
-
-
-foreach ($data as  $v) 
-{
-
-
-
-
- ?>
-
-
-<tr >
-    <td style="border: 1px solid #ddd; padding: 8px;" ><?php echo $v["FirstName"] ."  ". $v["LastName"];   ?></td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><?php  echo $v["UserName"];   ?></td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><?php  echo $v["Phone"];   ?></td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><?php  echo $v["Email"];   ?></td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><a style='text-decoration:none;color:green;' href='update.php?d=<?php echo $v["UserName"] ; ?> ' >
-
-    
-
-     Update</a></td>
-
-  
-     
-
- </tr>
-
-
-<?php 
-
-
-
-
-
-
-
-
- }
-
-
-
-
-}
-
-
-?>
-
-
-
-
-
-<!--- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
-
-
-
-
-
-
-<?php
-
-if( !  (  isset($_POST["showall"]) ||  isset($_POST["search"]) )   )
-
-{
-
-
-$data=array();
-
-$cd=array();
-
-include("function.php");
-
-renttakerdataread();
-
-
-foreach ($data as  $v) 
-{
-  if($v["Status"] == "yes")
-  {
-
-
-
- ?>
-
-
-<tr >
-    <td style="border: 1px solid #ddd; padding: 8px;" ><?php echo $v["FirstName"] ."  ". $v["LastName"];   ?></td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><?php  echo $v["UserName"];   ?></td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><?php  echo $v["Phone"];   ?></td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><?php  echo $v["Email"];   ?></td>
-     
-     
-
- </tr>
-
-
-<?php 
-
-
-
-
-
-
-
-
- }
-
-
-
-
-}
-
-}
-?>
-
-
-
-
- 
-</table>
-</p>
-
-
-
-
-<a href="seerequest.php"  style="width: 97%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;
-   border-radius: 4px; cursor: pointer;text-align:center;text-decoration: none;float: left;">See Requests</a><br><br><br>
-
-<a href="ajaxsearch.php"  style="width: 97%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;
-   border-radius: 4px; cursor: pointer;text-align:center;text-decoration: none;float: left;">Live Search</a><br><br><br>
 
 <a href="Logout.php"  style="width: 97%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;
    border-radius: 4px; cursor: pointer;text-align:center;text-decoration: none;float: left;">Logeout</a><br><br><br>
 
+
+<td style="border: 1px solid #ddd; padding: 8px;"><a style='text-decoration:none;color:blue;' href='Profile.php?d=<?php echo $v["UserName"] ; ?> ' >Profile </a></td>
+
+</tr>
+
+
+  
 
 
 
